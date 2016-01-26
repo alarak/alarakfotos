@@ -1,0 +1,240 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://alarakfotos.appspot.com/_ah/api",
+  "name" : "fotoApi",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://alarakfotos.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "methods" : {
+    "fotoApi.obtenerFotosPorAlbum" : {
+      "path" : "obtenerFotosPorAlbum",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.alarak.fotos.negocios.FotoNeg.obtenerFotosPorAlbum",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "fotoApi.obtenerFotoPorID" : {
+      "path" : "obtenerFotoPorID/{id}",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.alarak.fotos.negocios.FotoNeg.obtenerFotoPorID",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "fotoApi.actualizarFoto" : {
+      "path" : "actualizarFoto",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.alarak.fotos.negocios.FotoNeg.actualizarFoto",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "fotoApi.eliminarFoto" : {
+      "path" : "eliminarFoto",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.alarak.fotos.negocios.FotoNeg.eliminarFoto",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "fotoApi.nuevaFoto" : {
+      "path" : "nuevaFoto/{nombreAlbum}",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.alarak.fotos.negocios.FotoNeg.nuevaFoto",
+      "request" : {
+        "parameters" : {
+          "nombreAlbum" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Album" : {
+        "id" : "Album",
+        "type" : "object",
+        "properties" : {
+          "nombre" : {
+            "type" : "string"
+          },
+          "urlThumbnail" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Foto" : {
+        "id" : "Foto",
+        "type" : "object",
+        "properties" : {
+          "nombre" : {
+            "type" : "string"
+          },
+          "url" : {
+            "type" : "string"
+          },
+          "urlThumbnail" : {
+            "type" : "string"
+          },
+          "tags" : {
+            "type" : "string"
+          },
+          "fecha" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "album" : {
+            "$ref" : "Key"
+          },
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          }
+        }
+      },
+      "Key" : {
+        "id" : "Key",
+        "type" : "object",
+        "properties" : {
+          "kind" : {
+            "type" : "string"
+          },
+          "appId" : {
+            "type" : "string"
+          },
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "parent" : {
+            "$ref" : "Key"
+          },
+          "namespace" : {
+            "type" : "string"
+          },
+          "complete" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "FotoCollection" : {
+        "id" : "FotoCollection",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Foto"
+            }
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.alarak.fotos.negocios.FotoNeg.obtenerFotosPorAlbum" : {
+        "request" : {
+          "$ref" : "Album"
+        },
+        "response" : {
+          "$ref" : "FotoCollection"
+        }
+      },
+      "com.alarak.fotos.negocios.FotoNeg.obtenerFotoPorID" : {
+        "response" : {
+          "$ref" : "Foto"
+        }
+      },
+      "com.alarak.fotos.negocios.FotoNeg.actualizarFoto" : {
+        "request" : {
+          "$ref" : "Foto"
+        },
+        "response" : {
+          "$ref" : "Foto"
+        }
+      },
+      "com.alarak.fotos.negocios.FotoNeg.eliminarFoto" : {
+        "request" : {
+          "$ref" : "Foto"
+        }
+      },
+      "com.alarak.fotos.negocios.FotoNeg.nuevaFoto" : {
+        "request" : {
+          "$ref" : "Foto"
+        },
+        "response" : {
+          "$ref" : "Foto"
+        }
+      }
+    }
+  }
+}
