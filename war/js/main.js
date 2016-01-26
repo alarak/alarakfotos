@@ -1,3 +1,6 @@
+function init() {
+  window.init();
+}
 // 
 // Here is how to define your module 
 // has dependent on mobile-angular-ui
@@ -24,7 +27,7 @@ app.config(function($routeProvider) {
 // For this trivial demo we have just a unique MainController 
 // for everything
 //
-app.controller('MainController', function ($rootScope, $scope, $http) {
+app.controller('MainController', function ($rootScope, $scope, $http, $window) {
 
     // User agent displayed in home page
     $scope.userAgent = navigator.userAgent;
@@ -37,6 +40,17 @@ app.controller('MainController', function ($rootScope, $scope, $http) {
     $rootScope.$on('$routeChangeSuccess', function () {
         $rootScope.loading = false;
     });
+    
+    $window.init= function() {
+    	  $scope.$apply($scope.load_album_lib());
+    	};
+    
+    $scope.load_album_lib = function() {
+    	  gapi.client.load('albumApi', 'v1', function() {
+    	    $scope.is_backend_ready = true;
+    	    $scope.listAlbums();
+    	  }, '/_ah/api');
+    	};
 
     // Fake text i used here and there.
     $scope.lorem = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel explicabo, aliquid eaque soluta nihil eligendi adipisci error, illum corrupti nam fuga omnis quod quaerat mollitia expedita impedit dolores ipsam. Obcaecati.';
@@ -363,6 +377,21 @@ app.controller('MainController', function ($rootScope, $scope, $http) {
     }
 
     $scope.scrollItems = scrollItems;
+    
+    $scope.listAlbums = function(){
+    	gapi.client.albumApi.obtenerAlbumes().execute(function(resp) {
+    	    $scope.albums = resp.items;
+    	    $scope.$apply();
+    	  });
+    };
+    
+    $scope.newAlbum = function(){    	
+    	message = { "nombre" : $scope.txtNombreAlbum};
+    	gapi.client.albumApi.nuevoAlbum(message).execute(function(resp){
+    		$scope.listAlbums();
+    		console.log(resp);
+    		});
+    }
 
     $scope.bottomReached = function () {
         alert('Congrats you scrolled to the end of the list!');
@@ -393,4 +422,5 @@ app.controller('MainController', function ($rootScope, $scope, $http) {
             $scope.notices.splice(index, 1);
         }
     };
+    
 });
