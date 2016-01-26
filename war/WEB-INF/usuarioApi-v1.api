@@ -26,6 +26,21 @@
   "ownerDomain" : "helloworld.example.com",
   "ownerName" : "helloworld.example.com",
   "methods" : {
+    "usuarioApi.usuarioApi.listarUsuarios" : {
+      "path" : "usuario",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.alarak.fotos.api.UsuarioApi.listarUsuarios",
+      "request" : {
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "usuarioApi.nuevoUsuario" : {
       "path" : "nuevoUsuario",
       "httpMethod" : "POST",
@@ -37,21 +52,6 @@
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "usuarioApi.usuarioApi.listarUsuarios" : {
-      "path" : "usuario",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.alarak.fotos.api.UsuarioApi.listarUsuarios",
-      "request" : {
-        "body" : "empty"
       },
       "response" : {
         "body" : "autoTemplate(backendResponse)"
@@ -89,17 +89,17 @@
       }
     },
     "methods" : {
+      "com.alarak.fotos.api.UsuarioApi.listarUsuarios" : {
+        "response" : {
+          "$ref" : "UsuarioCollection"
+        }
+      },
       "com.alarak.fotos.api.UsuarioApi.nuevoUsuario" : {
         "request" : {
           "$ref" : "Usuario"
         },
         "response" : {
           "$ref" : "Usuario"
-        }
-      },
-      "com.alarak.fotos.api.UsuarioApi.listarUsuarios" : {
-        "response" : {
-          "$ref" : "UsuarioCollection"
         }
       }
     }

@@ -1,16 +1,20 @@
 <div class="row">
 	<div class="col-md-2"></div>
-	<div class="col-md-8">
+	<div class="col-md-8" ng-controller="MainController">
 		<div class="panel panel-primary">
 		  <div class="panel-heading">Formulario de Galerias</div>
 		  <div class="panel-body">
-		    <form>
+		    <form ng-submit="newAlbum()">
 			  <div class="form-group">
-			    <label for="txtNombre">Nombre de la galeria</label>
-			    <input type="text" class="form-control" id="txtNombre" placeholder="Nombre">
+			    <label for="txtNombreAlbum">Nombre de la galeria</label>
+			    <input type="text" id="txtNombreAlbum" ng-model="txtNombreAlbum" class="form-control" placeholder="Nombre" />
 			  </div>
-			  <button type="submit" class="btn btn-primary">Guardar</button>
+			  <button type="submit" class="btn btn-primary" value="Post">Guardar</button>
 			</form>
+			<ul>
+ 				<li ng-repeat="alb in albums">
+  					{{alb.nombre}}
+				</ul>
 		  </div>
 		</div>
 	</div>

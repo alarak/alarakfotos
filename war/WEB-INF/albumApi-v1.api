@@ -26,21 +26,6 @@
   "ownerDomain" : "helloworld.example.com",
   "ownerName" : "helloworld.example.com",
   "methods" : {
-    "albumApi.obtenerAlbumes" : {
-      "path" : "obtenerAlbumes",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.alarak.fotos.negocios.AlbumNeg.obtenerAlbumes",
-      "request" : {
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "albumApi.nuevoAlbum" : {
       "path" : "nuevoAlbum/{nombre}",
       "httpMethod" : "POST",
@@ -56,6 +41,21 @@
             "required" : true
           }
         },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "albumApi.obtenerAlbumes" : {
+      "path" : "obtenerAlbumes",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.alarak.fotos.negocios.AlbumNeg.obtenerAlbumes",
+      "request" : {
         "body" : "empty"
       },
       "response" : {
@@ -91,14 +91,14 @@
       }
     },
     "methods" : {
-      "com.alarak.fotos.negocios.AlbumNeg.obtenerAlbumes" : {
-        "response" : {
-          "$ref" : "AlbumCollection"
-        }
-      },
       "com.alarak.fotos.negocios.AlbumNeg.nuevoAlbum" : {
         "response" : {
           "$ref" : "Album"
+        }
+      },
+      "com.alarak.fotos.negocios.AlbumNeg.obtenerAlbumes" : {
+        "response" : {
+          "$ref" : "AlbumCollection"
         }
       }
     }
