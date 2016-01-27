@@ -11,11 +11,15 @@
 			  </div>
 			  <button type="submit" class="btn btn-primary" value="Post">Guardar</button>
 			</form>
-			<table>
+			<table class="table">
+				<thead>
+					<th>Nombre</th>
+				</thead>
+				<tbody>
 				<tr ng-repeat="alb in albums">
 					<td>{{alb.nombre}}</td>
-					<td><a ng-click='deleteAlbum(alb.nombre);' onclick='return confirm("Confirma eliminar?");' class="btn btn-primary">Eliminar</a></td>
-				</tr>
+					<td><a ng-click='deleteAlbum(alb.nombre);' class="btn btn-primary">Eliminar</a></td>
+				</tr></tbody>
 			</table>
 		  </div>
 		</div>
