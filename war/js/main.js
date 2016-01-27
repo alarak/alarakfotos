@@ -384,11 +384,14 @@ app.controller('MainController', function ($rootScope, $scope, $http, $window) {
     	    $scope.$apply();
     	  });
     };
-    $scope.deleteAlbum = function(nom){    	
-    	message = { "nombre" : nom };
-    	gapi.client.albumApi.eliminarAlbum(message).execute(function(){
-    		$scope.listAlbums();
-    		});
+    $scope.deleteAlbum = function(nom){
+    	if($window.confirm('Confirmas eliminar?')){
+    		message = { "nombre" : nom };
+        	gapi.client.albumApi.eliminarAlbum(message).execute(function(){
+        		$scope.listAlbums();
+        		});
+    	}
+    	
     }
     
     $scope.newAlbum = function(){    	
