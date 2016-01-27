@@ -67,10 +67,10 @@
           "email" : {
             "type" : "string"
           },
-          "nombre" : {
+          "passwd" : {
             "type" : "string"
           },
-          "passwd" : {
+          "nombre" : {
             "type" : "string"
           }
         }

@@ -25,6 +25,13 @@ public class AlbumNeg {
 		return album;
 	}
 	
+	@ApiMethod(name = "eliminarAlbum")
+	public void eliminarFoto(@Named("nombre") String nombre){
+		Album alb= ofy().load().type(Album.class).id(nombre).now();
+		if(alb != null)
+			ofy().delete().entity(alb).now();
+	}
+	
 	@ApiMethod(name = "obtenerAlbumes")
 	public List<Album> obtenerAlbumes(){
 		List<Album> albumes= ofy().load().type(Album.class).list();

@@ -47,6 +47,27 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
+    "albumApi.eliminarAlbum" : {
+      "path" : "eliminarFoto/{nombre}",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.alarak.fotos.negocios.AlbumNeg.eliminarFoto",
+      "request" : {
+        "parameters" : {
+          "nombre" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
     "albumApi.obtenerAlbumes" : {
       "path" : "obtenerAlbumes",
       "httpMethod" : "POST",
@@ -95,6 +116,8 @@
         "response" : {
           "$ref" : "Album"
         }
+      },
+      "com.alarak.fotos.negocios.AlbumNeg.eliminarFoto" : {
       },
       "com.alarak.fotos.negocios.AlbumNeg.obtenerAlbumes" : {
         "response" : {
