@@ -2,26 +2,34 @@
 	<div class="col-md-2"></div>
 	<div class="col-md-8" ng-controller="MainController">
 		<div class="panel panel-primary">
-		  <div class="panel-heading">Formulario de Galerias</div>
-		  <div class="panel-body">
-		    <form ng-submit="newAlbum()">
-			  <div class="form-group">
-			    <label for="txtNombreAlbum">Nombre de la galeria</label>
-			    <input type="text" id="txtNombreAlbum" ng-model="txtNombreAlbum" class="form-control" placeholder="Nombre" />
-			  </div>
-			  <button type="submit" class="btn btn-primary" value="Post">Guardar</button>
-			</form>
-			<table class="table">
-				<thead>
-					<th>Nombre</th>
-				</thead>
-				<tbody>
-				<tr ng-repeat="alb in albums">
-					<td>{{alb.nombre}}</td>
-					<td><a ng-click='deleteAlbum(alb.nombre);' class="btn btn-primary">Eliminar</a></td>
-				</tr></tbody>
-			</table>
-		  </div>
+			<div class="panel-heading">Galerias</div>
+			<div class="panel-body">
+				<form ng-submit="newAlbum()">
+					<div class="form-group">
+						<label for="txtNombreAlbum">Nombre de la galeria</label> 
+						<input type="text" id="txtNombreAlbum" ng-model="txtNombreAlbum"
+							class="form-control" placeholder="Nombre" required="" />
+					</div>
+					<button type="submit" class="btn btn-primary" value="Post">Guardar</button>
+				</form>
+			</div>
+		</div>
+		<br />
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<table class="table table-hover">
+					<thead>
+						<th>Nombre</th>
+					</thead>
+					<tbody>
+						<tr ng-repeat="alb in albums">
+							<td>{{alb.nombre}}</td>
+							<td><a ng-click='deleteAlbum(alb.nombre);'
+								class="btn btn-primary">Eliminar</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 </div>
