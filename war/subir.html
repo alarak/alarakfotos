@@ -2,24 +2,34 @@
 	<div class="col-md-2"></div>
 	<div class="col-md-8">
 		<div class="panel panel-primary">
-		  <div class="panel-heading">Formulario para subir una foto</div>
-		  <div class="panel-body">
-		    <form>
-			  <div class="form-group">
-			    <label for="txtNombre">Nombre</label>
-			    <input type="text" class="form-control" id="txtNombre" placeholder="Nombre de la foto">
-			  </div>
-			  <div class="form-group">
-			    <label for="txtTags">Tags</label>
-			    <input type="text" class="form-control" id="txtTags" placeholder="Etiquetas separadas por coma">
-			  </div>
-			  <div class="form-group">
-			    <label for="fileFoto">Tags</label>
-			  	<input name="fileFoto" type="file" />  
-			  </div>
-			  <button type="submit" class="btn btn-primary">Subir</button>
-			</form>
-		  </div>
+			<div class="panel-heading">Formulario para subir una foto</div>
+			<div class="panel-body">
+				<form>
+					<div class="form-group">
+						<label for="repeatSelect"> Galeria: </label> <select
+							name="repeatSelect" id="repeatSelect" required=""
+							ng-model="albumSelect">
+							<option ng-selected="$first" ng-repeat="option in albums"
+								value="{{option.nombre}}">{{option.nombre}}</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="txtNombre">Nombre</label> <input type="text"
+							class="form-control" id="txtNombre" required=""
+							placeholder="Nombre de la foto">
+					</div>
+					<div class="form-group">
+						<label for="txtTags">Tags</label> <input type="text"
+							class="form-control" id="txtTags"
+							placeholder="Etiquetas separadas por coma">
+					</div>
+					<div class="form-group">
+						<label for="fileFoto">Archivo</label> <input name="fileFoto"
+							type="file" required="" />
+					</div>
+					<button type="submit" class="btn btn-primary">Subir</button>
+				</form>
+			</div>
 		</div>
 	</div>
 </div>
