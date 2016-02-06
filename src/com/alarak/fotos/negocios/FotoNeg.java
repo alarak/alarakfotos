@@ -7,6 +7,8 @@ import com.alarak.fotos.datos.Foto;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.Named;
+import com.google.appengine.api.blobstore.BlobstoreService;
+import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 
@@ -46,5 +48,13 @@ public class FotoNeg {
 	public List<Foto> obtenerFotosPorAlbum(Album album){
 		List<Foto> fotos= ofy().load().type(Foto.class).filter("album", album).list();
 		return fotos;
+	}
+	
+	@ApiMethod(name = "obtenerFotoUploadUrl")
+	public Foto obtenerFotoUploadUrl(){
+		Foto foto= new Foto();
+		BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+		foto.setUrl(blobstoreService.createUploadUrl("/foto"));
+		return foto;
 	}
 }
